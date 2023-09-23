@@ -17,12 +17,10 @@ const { heroList, handleHeroChoice } = require('./assets/scripts/handlehero');
 //connection to mysql server
 
 
-
-
-const init = (question, newFile) => {
+const init = (question, handle) => {
   inquirer
     .prompt(question)
-    .then(newFile)
+    .then(handle)
 }
 
 init(heroList, handleHeroChoice);

@@ -3,8 +3,9 @@
 const db = require(`./mysqlConnect`);
 const init = require(`../../index`);
 
+
 const viewDepartments = () => {
-  db.query(`SELECT * FROM department`, (e, res) => {
+  db.query(`SELECT * FROM departments`, (e, res) => {
     e ? console.error(e) : console.table(res);
     init();
   })
