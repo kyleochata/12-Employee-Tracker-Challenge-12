@@ -9,3 +9,5 @@ const viewDepartments = () => {
     init();
   })
 }
+
+module.exports = viewDepartments
