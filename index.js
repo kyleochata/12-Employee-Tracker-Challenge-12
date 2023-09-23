@@ -17,12 +17,12 @@ const { heroList, handleHeroChoice } = require('./assets/scripts/handlehero');
 //connection to mysql server
 
 
-const init = (question, handle) => {
+const init = () => {
   inquirer
-    .prompt(question)
-    .then(handle)
+    .prompt(heroList)
+    .then(handleHeroChoice)
 }
 
-init(heroList, handleHeroChoice);
+init();
 
-module.exports = init;
+module.exports = { init };

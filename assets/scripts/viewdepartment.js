@@ -1,7 +1,7 @@
 // handling for if they choose view dep
 
 const db = require(`./mysqlConnect`);
-const init = require(`../../index`);
+const { init } = require(`../../index`);
 
 
 const viewDepartments = () => {
@@ -11,4 +11,18 @@ const viewDepartments = () => {
   })
 }
 
-module.exports = viewDepartments
+// const viewRoles = () => {
+//   db.query(`SELECT * FROM roles`, (e, res) => {
+//     e ? console.error(e) : console.table(res);
+//     init();
+//   })
+// }
+
+// const viewEmployees = () => {
+//   db.query(`SELECT * FROM employees`, (e, res) => {
+//     e ? console.error(e) : console.table(res);
+//     init();
+//   })
+// }
+
+module.exports = { viewDepartments }

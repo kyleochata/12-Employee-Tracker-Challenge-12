@@ -1,7 +1,7 @@
 //imports and global variables
 const inquirer = require('inquirer');
-const viewDepartments = require(`./viewdepartment`);
-const init = require(`../../index`);
+const { viewDepartments } = require(`./viewdepartment`);
+
 //initial question on load
 const heroList = [
   {
