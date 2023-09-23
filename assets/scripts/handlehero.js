@@ -1,5 +1,6 @@
 //imports and global variables
 const inquirer = require('inquirer')
+const viewDepartments = require(`./viewdepartment`)
 //initial question on load
 const heroList = [
   {
@@ -23,7 +24,7 @@ const handleHeroChoice = response => {
 
   switch (start) {
     case `View all departments`:
-      console.log(`view dep case`)
+      viewDepartments();
       break;
     case `View all roles`:
       console.log(`view roles case`)

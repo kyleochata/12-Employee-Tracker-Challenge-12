@@ -13,19 +13,9 @@ Presented with options: ==> list => options - DONE
 //Bring in inquirer
 const inquirer = require('inquirer');
 const { heroList, handleHeroChoice } = require('./assets/scripts/handlehero');
-const mysql = require('mysql2');
-const password = require('./assets/scripts/pass');
 
 //connection to mysql server
-const db = mysql.createConnection(
-  {
-    host: `localhost`,
-    user: `root`,
-    password,
-    database: `employee_tracker_db`
-  },
-  console.log(`Connected to the employee tracker database`)
-);
+
 
 
 
@@ -36,3 +26,5 @@ const init = (question, newFile) => {
 }
 
 init(heroList, handleHeroChoice);
+
+module.exports = init;
