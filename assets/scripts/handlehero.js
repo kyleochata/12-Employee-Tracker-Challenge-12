@@ -1,6 +1,5 @@
 //imports and global variables
 const inquirer = require('inquirer');
-const { viewDepartments } = require(`./viewdepartment`);
 
 //initial question on load
 const heroList = [
@@ -20,33 +19,6 @@ const heroList = [
 ]
 
 //function to handle the users first choice from hero list
-const handleHeroChoice = response => {
-  const { start } = response;
 
-  switch (start) {
-    case `View all departments`:
-      viewDepartments();
-      break;
-    case `View all roles`:
-      console.log(`view roles case`)
-      break;
-    case `View all employees`:
-      console.log(`view emp case`)
-      break;
-    case `Add a department`:
-      console.log(`add dep case`)
-      break;
-    case `Add a role`:
-      console.log(`add role case`)
-      break;
-    case `Add an employee`:
-      console.log(`add emp case`)
-      break;
-    case `Update an employee's role`:
-      console.log(`update emp role case`)
-      break;
-  }
 
-}
-
-module.exports = { heroList, handleHeroChoice }
+module.exports = { heroList }

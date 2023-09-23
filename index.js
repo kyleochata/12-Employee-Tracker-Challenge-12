@@ -12,10 +12,60 @@ Presented with options: ==> list => options - DONE
 
 //Bring in inquirer
 const inquirer = require('inquirer');
-const { heroList, handleHeroChoice } = require('./assets/scripts/handlehero');
+const { heroList } = require('./assets/scripts/handlehero');
+const db = require(`./assets/scripts/mysqlConnect`);
 
-//connection to mysql server
 
+//viewing db functions
+const viewDepartments = () => {
+  db.query(`SELECT * FROM departments`, (e, res) => {
+    e ? console.error(e) : console.table(res);
+    init();
+  });
+}
+const viewRoles = () => {
+  db.query(`SELECT * FROM roles`, (e, res) => {
+    e ? console.error(e) : console.table(res);
+    init();
+  })
+};
+const viewEmployees = () => {
+  db.query(`SELECT * FROM employees`, (e, res) => {
+    e ? console.error(e) : console.table(res);
+    init();
+  })
+}
+
+
+
+const handleHeroChoice = response => {
+  const { start } = response;
+
+  switch (start) {
+    case `View all departments`:
+      viewDepartments();
+      break;
+    case `View all roles`:
+      viewRoles();
+      break;
+    case `View all employees`:
+      viewEmployees();
+      break;
+    case `Add a department`:
+      console.log(`add dep case`)
+      break;
+    case `Add a role`:
+      console.log(`add role case`)
+      break;
+    case `Add an employee`:
+      console.log(`add emp case`)
+      break;
+    case `Update an employee's role`:
+      console.log(`update emp role case`)
+      break;
+  }
+
+}
 
 const init = () => {
   inquirer
@@ -24,5 +74,3 @@ const init = () => {
 }
 
 init();
-
-module.exports = { init };
