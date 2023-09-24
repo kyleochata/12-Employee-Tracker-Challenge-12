@@ -12,8 +12,8 @@ Presented with options: ==> list => options - DONE
 
 //Bring in inquirer
 const inquirer = require('inquirer');
-const { heroList } = require('./assets/scripts/handlehero');
-const db = require(`./assets/scripts/mysqlConnect`);
+const { heroList, departmentPrompt } = require('./assets/scripts/prompts');
+const { db } = require(`./assets/scripts/mysqlConnect`);
 
 
 //viewing db functions
