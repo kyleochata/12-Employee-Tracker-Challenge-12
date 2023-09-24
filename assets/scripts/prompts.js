@@ -33,12 +33,21 @@ const listDepartments = () => {
     if (e) {
       console.error(e)
     } else {
-      return res
+      const departmentNames = res.map((row) => row.department_name);
+      return departmentNames
     }
   })
   return getDepList
 }
 
+// const t = db.query(`SELECT department_name FROM departments`, (e, res) => {
+//   if (e) {
+//     console.error(e)
+//   } else {
+//     const departmentNames = res.map((row) => row.department_name);
+//     return departmentNames
+//   }
+// })
 //add role questions
 const rolePrompt = [
   {
@@ -59,16 +68,13 @@ const rolePrompt = [
   }
 ]
 
-const t = db.query(`SELECT department_name FROM departments`, (e, res) => {
-  if (e) {
-    console.error(e)
-  } else {
-    return res
-  }
-})
 
 
+const f = () => {
+  inquirer
+    .prompt(rolePrompt)
+}
 
-console.log(t);
+f();
 
 module.exports = { heroList, departmentPrompt }
