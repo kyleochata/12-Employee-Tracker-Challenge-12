@@ -1,6 +1,8 @@
 //imports and global variables
 const inquirer = require('inquirer');
-const { db } = require(`./mysqlConnect`)
+const { db } = require(`./mysqlConnect`);
+const { departmentList } = require(`./getAllDep`);
+// const { findAllDepartments } = require(`./getAllDep`)
 //initial question on load
 const heroList = [
   {
@@ -27,18 +29,6 @@ const departmentPrompt = [
   }
 ]
 
-//Get departments list from db
-const listDepartments = () => {
-  const getDepList = db.query(`SELECT department_name FROM departments`, (e, res) => {
-    if (e) {
-      console.error(e)
-    } else {
-      const departmentNames = res.map((row) => row.department_name);
-      return departmentNames
-    }
-  })
-  return getDepList
-}
 
 // const t = db.query(`SELECT department_name FROM departments`, (e, res) => {
 //   if (e) {
@@ -48,6 +38,7 @@ const listDepartments = () => {
 //     return departmentNames
 //   }
 // })
+
 //add role questions
 const rolePrompt = [
   {
@@ -64,17 +55,9 @@ const rolePrompt = [
     type: `list`,
     message: `Please choose which department this role is in.`,
     name: `addRoleDepartment`,
-    choices: listDepartments()
+    choices: departmentList()
   }
 ]
 
 
-
-const f = () => {
-  inquirer
-    .prompt(rolePrompt)
-}
-
-f();
-
-module.exports = { heroList, departmentPrompt }
+module.exports = { heroList, departmentPrompt, rolePrompt }

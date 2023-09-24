@@ -12,7 +12,7 @@ Presented with options: ==> list => options - DONE
 
 //Bring in inquirer
 const inquirer = require('inquirer');
-const { heroList, departmentPrompt } = require('./assets/scripts/prompts');
+const { heroList, departmentPrompt, rolePrompt } = require('./assets/scripts/prompts');
 const { db } = require(`./assets/scripts/mysqlConnect`);
 
 
@@ -22,7 +22,7 @@ const viewDepartments = () => {
     e ? console.error(e) : console.table(res);
     init();
   });
-}
+};
 const viewRoles = () => {
   db.query(`SELECT * FROM roles`, (e, res) => {
     e ? console.error(e) : console.table(res);
@@ -30,10 +30,36 @@ const viewRoles = () => {
   })
 };
 const viewEmployees = () => {
-  db.query(`SELECT * FROM employees`, (e, res) => {
-    e ? console.error(e) : console.table(res);
+  db.query(`SELECT * FROM employees`, (e, r) => {
+    e ? console.error(e) : console.table(r);
     init();
   })
+}
+
+const addDepartment = () => {
+  inquirer
+    .prompt(departmentPrompt)
+    .then((ans => {
+      db.query(`INSERT INTO departments(department_name)
+      VALUES( "${ans.addDepartment}")`, (e, res) => {
+        if (e) {
+          console.error(e);
+        } else {
+          console.log(`${ans.addDepartment} department has been added. Check out th master list of departments`)
+          db.query(`SELECT * FROM departments`, (err, results) => {
+            err ? console.error(err) : console.table(results);
+            init();
+          })
+        }
+      }
+      )
+
+    }))
+};
+
+const addRole = (res) => {
+  inquirer
+    .prompt(rolePrompt)
 }
 
 
@@ -52,10 +78,10 @@ const handleHeroChoice = response => {
       viewEmployees();
       break;
     case `Add a department`:
-      console.log(`add dep case`)
+      addDepartment();
       break;
     case `Add a role`:
-      console.log(`add role case`)
+      addRole(start)
       break;
     case `Add an employee`:
       console.log(`add emp case`)
@@ -70,7 +96,11 @@ const handleHeroChoice = response => {
 const init = () => {
   inquirer
     .prompt(heroList)
-    .then(handleHeroChoice)
+    .then((res => {
+      handleHeroChoice(res)
+    }))
 }
 
 init();
+
+
