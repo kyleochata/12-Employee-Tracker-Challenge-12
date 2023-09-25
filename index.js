@@ -92,7 +92,8 @@ const addRole = () => {
               db.promise().query(`INSERT INTO roles(title, salary, department_id)
           VALUES(?, ?, ?)`, [ans.addRoleName, ans.addRoleSalary, handledId]);
               console.log(`${ans.addRoleName} has been added.`);
-              init()
+              viewRoles();
+              init();
             })
         })
     }
@@ -165,6 +166,7 @@ const addEmployee = () => {
                   console.log(`insert employee error`)
                 } else {
                   console.log(`${addEmployeeFirstName} ${addEmployeeLastName} has been added.`)
+                  viewEmployees();
                   init();
                 }
               })
