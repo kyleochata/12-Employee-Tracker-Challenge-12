@@ -13,6 +13,7 @@ const viewDepartments = () => {
     init();
   });
 };
+
 const viewRoles = () => {
   const roleQuery = `SELECT 
   roles.id, 
@@ -28,6 +29,7 @@ const viewRoles = () => {
     init();
   })
 };
+
 const viewEmployees = () => {
   const viewEmployeeQuery = `SELECT
       employees.id,
@@ -68,7 +70,6 @@ const viewDepartmentBudget = () => {
     init();
   })
 }
-
 //end view db table functions
 
 //add items to db table functions
