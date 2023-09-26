@@ -1,7 +1,6 @@
 //imports and global variables
 const inquirer = require('inquirer');
 const { db } = require(`./mysqlConnect`);
-const { departmentList } = require(`./getAllDep`);
 
 //initial question on load
 const heroList = [
