@@ -33,5 +33,4 @@ CREATE TABLE employees(
   REFERENCES employees(id)
   ON DELETE SET NULL,
   PRIMARY KEY (id)
-
 );

@@ -2,7 +2,7 @@
 const inquirer = require('inquirer');
 const { db } = require(`./mysqlConnect`);
 const { departmentList } = require(`./getAllDep`);
-// const { findAllDepartments } = require(`./getAllDep`)
+
 //initial question on load
 const heroList = [
   {
@@ -14,7 +14,9 @@ const heroList = [
       `Add a department`, new inquirer.Separator(),
       `Add a role`, new inquirer.Separator(),
       `Add an employee`, new inquirer.Separator(),
-      `Update an employee's role`, new inquirer.Separator()
+      `Update an employee's role`, new inquirer.Separator(),
+      `View department budgets`, new inquirer.Separator(),
+      `Close program`, new inquirer.Separator(),
     ],
     name: `start`
   }
